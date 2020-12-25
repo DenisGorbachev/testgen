@@ -1,5 +1,6 @@
 import fs from 'fs'
 import tmp from 'tmp'
+import './test/chai.js'
 import { TestUser } from './test/support/TestUser.js'
 
 let alice
@@ -13,7 +14,7 @@ test('User runs testgen for two-events sample', async function () {
   const sampleDir = await getSampleDir()
   const targetTestFilename = `${targetDir}/000001.test.js`
   const sampleTestFilename = `${sampleDir}/two-events.000001.js`
-  const result = alice.run(`${__dirname}/testgen.test.sh`, [`${sampleDir}/two-events.js`, targetDir])
+  const result = await alice.exec(`${__dirname}/testgen.test.sh`, [`${sampleDir}/two-events.js`, targetDir])
   result.should.be.a.commandResult(`Generated ${targetTestFilename}`)
   const testActual = fs.readFileSync(targetFilename)
   const testExpected = fs.readFileSync(sampleTestFilename)

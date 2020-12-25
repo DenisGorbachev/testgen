@@ -3,21 +3,24 @@ export default function (chai, utils) {
   Assertion.addMethod('commandResult', function (stdout) {
     this.assert(
       this._obj.stdout === stdout
-      , 'expected #{this}.stdout to equal #{exp}, but got #{act}'
-      , 'expected #{this}.stdout to not equal #{exp}'
-      , stdout,
+      , 'expected stdout to equal #{exp}, but got #{act}'
+      , 'expected stdout to not equal #{exp}'
+      , stdout
+      , this._obj.stdout,
     )
     this.assert(
       this._obj.stderr === ''
-      , 'expected #{this}.stderr to equal #{exp}, but got #{act}'
-      , 'expected #{this}.stderr to not equal #{exp}'
-      , '',
+      , 'expected stderr to equal #{exp}, but got #{act}'
+      , 'expected stderr to not equal #{exp}'
+      , ''
+      , this._obj.stderr,
     )
     this.assert(
       this._obj.exitCode === 0
-      , 'expected #{this}.exitCode to equal #{exp}, but got #{act}'
-      , 'expected #{this}.exitCode to not equal #{exp}'
-      , '',
+      , 'expected exitCode to equal #{exp}, but got #{act}'
+      , 'expected exitCode to not equal #{exp}'
+      , ''
+      , this._obj.exitCode,
     )
   })
 }
