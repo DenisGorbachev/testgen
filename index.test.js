@@ -1,18 +1,30 @@
 import fs from 'fs'
+import tmp from 'tmp'
+import { TestUser } from './test/support/TestUser.js'
+
+let alice
+
+beforeEach(async function () {
+  alice = new TestUser()
+})
 
 test('User runs testgen for two-events sample', async function () {
   const targetDir = await getTargetDir()
-  const samplesDir = await getSamplesDir()
-  user.run('./testgen', [`${samplesDir}/two-events.js`, targetDir])
-  const testActual = fs.readFileSync(`${targetDir}/000001.test.js`)
-  const testExpected = fs.readFileSync(`${samplesDir}/two-events.000001.test.js`)
-  expect(testActual).toEqual(testExpected)
+  const sampleDir = await getSampleDir()
+  const targetTestFilename = `${targetDir}/000001.test.js`
+  const sampleTestFilename = `${sampleDir}/two-events.000001.js`
+  const result = alice.run(`${__dirname}/testgen.test.sh`, [`${sampleDir}/two-events.js`, targetDir])
+  result.should.be.a.commandResult(`Generated ${targetTestFilename}`)
+  const testActual = fs.readFileSync(targetFilename)
+  const testExpected = fs.readFileSync(sampleTestFilename)
+  testActual.should.equal(testExpected)
 })
 
 async function getTargetDir() {
-  return getTmpDir()
+  const obj = tmp.dirSync()
+  return obj.name
 }
 
-async function getSamplesDir() {
-  return `${__dirname}/test/samples`
+async function getSampleDir() {
+  return `${__dirname}/test/sample`
 }
