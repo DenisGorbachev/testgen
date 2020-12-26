@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "watch": "jest --watch --bail",
+    "watchAll": "jest --watchAll --bail",
     "execute": "babel-node ./index.js"
   },
   "engines": {

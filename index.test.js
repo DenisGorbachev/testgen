@@ -9,12 +9,16 @@ beforeEach(async function () {
   alice = new TestUser()
 })
 
-test('User runs testgen for two-events sample', async function () {
+test('User writes event definitions', async function () {
+
+})
+
+test('User runs testgen for quadratic-equation sample', async function () {
   const targetDir = await getTargetDir()
   const sampleDir = await getSampleDir()
   const targetTestFilename = `${targetDir}/000001.test.js`
-  const sampleTestFilename = `${sampleDir}/two-events.000001.js`
-  const result = await alice.exec(`${__dirname}/testgen.test.sh`, [`${sampleDir}/two-events.js`, targetDir])
+  const sampleTestFilename = `${sampleDir}/quadratic-equation.000001.js`
+  const result = await alice.exec(`${__dirname}/testgen.test.sh`, [`${sampleDir}/quadratic-equation.js`, targetDir])
   result.should.be.a.commandResult(`Generated ${targetTestFilename}`)
   const testActual = fs.readFileSync(targetTestFilename)
   const testExpected = fs.readFileSync(sampleTestFilename)

@@ -1,6 +1,4 @@
 /**
- *
- *
  * Outputs:
  * - Test case
  */
