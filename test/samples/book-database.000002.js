@@ -1,12 +1,16 @@
-export const story = async function () {
-  await alice.run('author add "George Orwell"')
-  return alice.run('author list')
+export const prepare = async function () {
+  await exec('author add "George Orwell"')
 }
 
-export const test = async function (result) {
+export const execute = async function () {
+  return exec('author list')
+}
+
+export const test = async function (result, snapshotOld, snapshotNew) {
   expect(result).toEqual({
     stdout: 'George Orwell: 0 books',
     stderr: '',
     exitCode: 0,
   })
+  expect(snapshotNew).toEqual(snapshotOld)
 }

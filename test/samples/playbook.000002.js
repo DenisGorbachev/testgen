@@ -1,6 +1,6 @@
 export const story = async function () {
-  await alice.open('/')
-  return alice.click('Website')
+  await open('alice', '/')
+  return click('alice', 'Website')
 }
 
 export const test = async function (result) {

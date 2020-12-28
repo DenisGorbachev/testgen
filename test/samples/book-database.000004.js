@@ -1,5 +1,5 @@
 export const story = async function () {
-  return alice.run('author remove "George Orwell"')
+  return exec('author remove "George Orwell"')
 }
 
 export const test = async function (result) {

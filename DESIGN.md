@@ -19,10 +19,4 @@ Testgen generates test cases from event definitions.
       * I don't want to implement duplicate tests.
         * I want to write test filters.
       * I don't want the test generator to overwrite the files I've modified.
-
-## Events
-
-* User runs testgen
-* User writes an event definition
-* User writes a test filter
-* Testgen generates a test
+      * I don't want to modify my tests after I've changed a variable name in my event definitions

@@ -1,3 +1,5 @@
+import { getSchemaId } from '../util/ajv.js'
+
 export const EventDefinitionSamples = [
   {
     actor: 'alice',

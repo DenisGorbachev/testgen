@@ -1,5 +1,9 @@
-export const story = async function () {
-  return alice.open('/')
+export const prepare = async function () {
+
+}
+
+export const execute = async function () {
+  return open('alice', '/')
 }
 
 export const test = async function (result) {

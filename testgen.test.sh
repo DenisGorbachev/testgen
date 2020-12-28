@@ -1,3 +1,3 @@
 #!/bin/bash
 
-babel-node index.js
+babel-node index.js $@
